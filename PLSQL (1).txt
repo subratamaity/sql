@@ -1,0 +1,113 @@
+1: DECLARE
+
+	YEAR number(4);
+
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('ENTER THE YEAR\n');
+	YEAR := '&YEAR';
+	IF(MOD(YEAR,400) = 0 OR MOD(YEAR,4) = 0 OR MOD(YEAR,100)=0) THEN 
+	DBMS_OUTPUT.PUT_LINE(YEAR || ' IS A LEAP YEAR');
+	ELSE 
+	DBMS_OUTPUT.PUT_LINE(YEAR || ' IS NOT A LEAP YEAR');
+	END IF;
+	
+	END;
+/
+
+2: DECLARE
+	NUM number(20);
+	 REVER number(20);
+	TEMP number(20);
+
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('NUMBER : \n');
+	NUM := &NUM;
+	REVER := 0;
+	TEMP := NUM;
+
+	LOOP
+		EXIT WHEN TEMP = 0;
+			REVER := REVER * 10;
+			REVER := REVER + MOD(TEMP,10);
+			TEMP := TRUNC(TEMP/10);
+		END LOOP;
+	IF REVER = NUM THEN 
+	DBMS_OUTPUT.PUT_LINE(NUM || ' IS A PALINDROME NUMBER\n');
+	ELSE 
+	DBMS_OUTPUT.PUT_LINE(NUM || ' IS NOT A PALINDROME NUMBER\n');
+	END IF;
+END;
+/
+
+3: DECLARE
+	NUM number(5);
+	SUM1 number(5);
+	TEMP number(5);
+	REMAINDER number(5);
+BEGIN
+	
+	DBMS_OUTPUT.PUT_LINE('NUMBER : \n');
+	NUM := &NUM;
+	TEMP := NUM;
+	SUM1 := 0;
+	LOOP
+		EXIT WHEN TEMP = 0;
+				REMAINDER := MOD(TEMP,10);
+				SUM1 := SUM1 + REMAINDER* REMAINDER * REMAINDER;
+				TEMP := TRUNC(TEMP / 10);
+	END LOOP;
+	IF SUM1 = NUM THEN 
+		DBMS_OUTPUT.PUT_LINE( NUM || ' IS A AMSTRONG NUMBER\n');
+	ELSE 
+		DBMS_OUTPUT.PUT_LINE( NUM || ' IS NOT A AMSTRONG NUMBER\n');
+	END IF;
+END;
+
+/
+
+4: DECLARE
+	X number(3);
+	Y number(3);
+	Z number(3);
+	I number(3);
+	J number(3);
+	K number(3);
+	L number(3);
+	M number(3);
+	N number(3);
+	G number(3);
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('ENTER X : \n');
+	X := &X;
+	DBMS_OUTPUT.PUT_LINE('ENTER Y : \n');
+	Y :=&y;
+	DBMS_OUTPUT.PUT_LINE('ENTER Z : \n');
+	Z :=&Z;
+	
+	IF (X>Y) THEN 
+	J := X;
+	K := Y;
+	ELSE 
+	J := Y;
+	K := X;
+	END IF;
+	
+	
+	L := MOD(J,K);
+
+	IF (L>Z)	THEN 
+	M := L;
+	N := Z;
+	ELSE 
+	M := Z;
+	N := L;
+	END IF;
+
+	G := (M/N);
+	
+	DBMS_OUTPUT.PUT_LINE(G || ' IS THE GCD OF THREE NUM\n');
+END;
+
+/
+
+5: 

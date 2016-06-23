@@ -1,0 +1,151 @@
+Q1:-SELECT fname,lname FROM  cust;
+Q2:-SELECT * FROM  cust;
+Q3:-SELECT fname ,area FROM  cust;
+Q4:-SELECT title FROM  movie;
+Q5:-SELECT fname FROM  cust where fname like '_a%';
+Q6:-SELECT lname FROM  cust where fname like 'K%' or fname like 'U%';
+Q7:-SELECT area FROM  cust where area like 'a%';
+Q8:-SELECT area FROM  cust where area like 'da%' or area like 'mu%' or area like 'gh%';
+Q9:-SELECT phone_no FROM  cust where phone_no >5666;
+Q10:-SELECT issue_date,cust_id FROM  invoice where issue_date between '22-jul-14' and '24-jul-14';
+Q11:-SELECT mv_no ,cust_id FROM  invoice where cust_id = 'cs1' or cust_id = 'cs2';
+Q12:-SELECT title FROM  movie where type != action;
+Q13:-SELECT price,title FROM  movie where price > 150 and price < 20802;
+Q14;-SELECT price *150 as new_price FROM  movie where price > 150;
+Q15:-SELECT price *15 as new_price FROM  movie;
+Q17:- SELECT title,type FROM  movie where type !='action';
+Q18:- SELECT sqrt(price) FROM  movie;
+Q19:-
+Q20:-SELECT fname,cust_id,area FROM  cust;
+Q21:-SELECT fname FROM  cust;
+Q22:-SELECT title,mv_no,type FROM  movie where star like  'a%';
+Q23:- SELECT mv_no , inv_no FROM  invoice where mv_no < 5;
+
+						DATE:- 12/08/14
+Q24:- SELECT COUNT(cust_id) AS total_cust FROM cust;
+Q25:-SELECT SUM(price) AS TOTAL_PRICE FROM MOVIE;
+Q26:-SELECT AVG(PRICE) AS AVG_PRICE FROM MOVIE;
+Q27:-SELECT MAX(PRICE) AS MAX_PRICE FROM MOVIE;
+	SELECT MIN(PRICE) AS MIN_PRICE FROM MOVIE;
+Q28:-SELECT COUNT(PRICE) AS PRICE
+	FROM MOVIE
+	WHERE PRICE > '1500';
+Q29:-
+			LIKE 'ANIMATION' 
+							GROUP BY 
+
+						
+Q30:-SELECT AVG(PRICE) AS AVERAGE_PRICE, TYPE FROM MOVIE GROUP BY TYPE;
+Q31:-SELECT COUNT(TITLE) AS MVI_NO ,TYPE FROM MOVIE GROUP BY TYPE;
+Q32:-SELECT COUNT(*) AS MV_NO ,TYPE FROM MOVIE  
+	HAVING TYPE LIKE 'animation' OR TYPE LIKE 'action' GROUP BY TYPE;
+Q33:-SELECT TYPE,  AVG(PRICE) AS AVERAGE_PRICE FROM MOVIE GROUP BY TYPE
+	HAVING MAX(PRICE)  >= 1500.24;
+Q34:-SELECT TYPE,  AVG(PRICE) AS AVERAGE_PRICE FROM MOVIE 
+	WHERE TYPE LIKE 'COMEDY' OR TYPE LIKE 'THILLER'
+	GROUP BY TYPE
+	HAVING MAX(PRICE)  >= 1500.24;
+
+Q35:-SELECT title FROM movie,invoice
+	WHERE movie.mv_no = invoice.mv_no 
+	AND CUST_NAME LIKE 'IVAN'; 
+Q36:-SELECT INV_NO , MOVIE.MV_NO,TITLE FROM INVOICE,MOVIE
+	WHERE MOVIE.MV_NO = INVOICE.MV_NO 
+	AND ISSUE_DATE LIKE  '25-JUL%';
+Q37:-SELECT INV_NO , MOVIE.MV_NO,TITLE FROM INVOICE,MOVIE
+	WHERE MOVIE.MV_NO = INVOICE.MV_NO 
+	AND ISSUE_DATE BETWEEN  '25-JUL-14' AND '30-JUL-14';
+Q38:-SELECT TITLE,TYPE FROM MOVIE,INVOICE
+	WHERE INVOICE.MV_NO = MOVIE.MV_NO 
+	AND CUST_NAME LIKE 'VANDAM';
+Q39:-SELECT CUST_ID,TITLE FROM INVOICE,MOVIE
+	WHERE TYPE LIKE 'DRAMA'
+	AND INVOICE.MV_NO = MOVIE.MV_NO;
+
+						DATE :- 19-08-2014
+
+39 -> select cust.fname,cust.lname,cust.cust_id from cust,movie,invoice
+         where cust.cust_id=invoice.cust_id and movie.mv_no =invoice.mv_no and movie.type='DRAMA' ;
+40 -> select 'the movie taken by'||cust.fname||cust.lname||'is'||movie.title
+         from cust,movie,invoice       
+         where cust.cust_id=invoice.cust_id and invoice.mv_no , movie.mv_no>=3;
+41 ->  select lname , fname , title from movie,cust,invoice
+ 	where cust.cust_id = invoice.cust_id  and 
+	 movie.mv_no = invoice.mv_no and 
+	 movie.mv_no = '3';
+42 ->  select fname,lname , area from cust where cust_id in(select cust_id from invoice where inv_no='i105'or inv_no='x');
+43 -> select fname,lname ,phone_no
+         from cust 
+         where cust_id in ( select cust_id from invoice where issue_date < '31-AUG-13');
+
+44 ->select title from movie where mv_no in 
+	 (select mv_no from invoice where cust_id in
+		(select cust_id from cust where fname = 'Tanmoy' or fname = 'Usha'));
+
+45 -> select mv_no,title
+         from  movie
+         where mv_no in ( select mv_no from invoice );
+46 -> select type,mv_no 
+         from movie
+         where mv_no in ( select mv_no from invoice where cust_id='a01' and cust_id='a02');
+
+47 -> select  cust_id
+         from cust 
+         where cust_id in (select cust_id 
+         from invoice 
+         where mv_no in( select mv_no from mv_nw where star='xxxx'or star='tom cruise')); 
+
+48 -> select lname,fname 
+        from cust
+        where cust_id in (select cust_id from invoice);
+
+49:-
+
+50:- select inv_no ,cust_id ,to_char (issue_date , 'dd-month-yyyy') from invoice;
+
+51:- select to_char(issue_date,'dd-month-yy') from invoice;
+
+52:-select sysdate+15 from dual;
+
+53:-select cust_id ,return_date-issue_date from invoice;
+
+54 ->update cust
+        set  phone_no = '466389'
+         where fname='Koushik';
+
+55 ->update invoice
+        set  issue_date = '31-jul-14'
+        where cust_id='cs6';
+         
+56 -> update movie
+         set  price=250
+         where title='gone with wind';
+
+57 -> delete from invoice where inv_no='i08';
+
+58 -> delete from invoice where return_date = '31-jul-14';
+
+59 ->  update cust
+         set  area='vs'
+         where cust_id='A05';
+
+60 -> update invoice
+         set  return_date='22-JUL-14'
+         where  inv_no='i08';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

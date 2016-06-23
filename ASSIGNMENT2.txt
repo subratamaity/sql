@@ -1,0 +1,396 @@
+				ASSIGNMENT-02
+							DATE: 26.08.14
+1:: TABLE : DEPOSIT;
+	
+	CREATE TABLE DEPOSIT (Act_no varchar2(10) PRIMARY KEY,B_name varchar2(20),C_name VARCHAR2(20),amount number(8,2),FOREIGN KEY(B_name) REFERENCES  BRANCH(B_name),FOREIGN KEY(C_name) REFERENCES  CUSTOMER(C_name));
+		
+		
+INSERT IN THE DEPOSIT TABLE ;
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1111','UCO','KOUSHIK RUIDAS','10000.00');	
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1112','SBI','TANMOY MONDAL','100000.00');	
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1113','RBI','ANU SAHA','1125.00');	
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1114','AXIS','ABHISHEK SAHA','2050.00');	
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1115','UCO','KOUSHIK RUIDAS','10000.00');	
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1116','HDFC','BINAYAK GHOSH','10410.00');	
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1117','FEDERAL','KOUSHIK BHAKAT','11000.00');	
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1118','UBI','SOHINI MODOK','2200.00');	
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1119','UBI','ARIJIT DAS','5000.00');
+	
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('1120','FEDERAL','DHANUKA','5100.00');	
+
+	INSERT INTO DEPOSIT(Act_no,B_name,C_name,amount)
+		values('11221','SBI','AMRESH2','7100.00');
+		
+	
+
+2:: TABLE : BRANCH;
+
+	CREATE TABLE BRANCH (
+		B_name VARCHAR2(10) PRIMARY KEY,
+		City VARCHAR2(10),
+		CHECK (City = 'Delhi' OR City = 'Kolkata' OR City = 'Mumbai')
+		);
+		
+INSERT IN THE TABLE BRANCH;
+		
+		INSERT INTO BRANCH(B_name , City)
+		values('UCO','Delhi');
+		INSERT INTO BRANCH(B_name , City)
+		values('UBI','Mumbai');
+		INSERT INTO BRANCH(B_name , City)
+		values('SBI','Delhi');
+		INSERT INTO BRANCH(B_name , City)
+		values('AXIS','Mumbai');
+		INSERT INTO BRANCH(B_name , City)
+		values('HDFC','Kolkata');
+		INSERT INTO BRANCH(B_name , City)
+		values('RBI','Mumbai');
+		INSERT INTO BRANCH(B_name , City)
+		values('FEDERAL','Kolkata');
+		
+3:: TABLE : CUSTOMER
+
+	CREATE TABLE CUSTOMER (C_name VARCHAR2(10) PRIMARY KEY CHECK (C_name = UPPER(C_name)),City VARCHAR2(10) NOT NULL);
+		
+	ALTER TABLE CUSTOMER 
+		MODIFY ( C_name VARCHAR2(20),City VARCHAR2(20));	
+		
+		
+	
+
+      INSERT IN THE TABLE CUSTOMER ;
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('KOUSHIK RUIDAS','DURGAPUR');
+		
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('MAHIMA BHARDWAJ','PATNA');
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('ABHISHEK SAHA','BURDWAN');
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('ANU SAHA','DURGAPUR');
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('TANMOY MONDAL','SUNDORBON');
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('BINAYAK GHOSH','SANTINIKETAN');
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('ARIJIT DAS','JHARGRAM');
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('KOUSHIK BHAKAT','BANKURA');
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('SOHINI MODOK','KOLKATA');
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('DHANUKA','KOLKATA');
+
+		INSERT INTO CUSTOMER (C_name,City)
+		VALUES('AMRESH2','SUNDORBON');
+		
+4:: TABLE : BORROW
+
+	CREATE TABLE BORROW (
+			Loan_no VARCHAR2(10) PRIMARY KEY CHECK (Loan_no = UPPER(Loan_no)),
+			C_name VARCHAR2(20),
+			B_name VARCHAR2(10),
+			Amount NUMBER(8,2) ,			FOREIGN KEY(B_name) REFERENCES BRANCH(B_name),
+			FOREIGN KEY(C_name) REFERENCES  CUSTOMER(C_name)
+			 );
+
+
+INSERT IN THE TABLE BORROW;
+
+		INSERT INTO  BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A1','KOUSHIK RUIDAS','UBI','100');
+
+		INSERT INTO  BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A2','TANMOY MONDAL','SBI','110');
+
+		INSERT INTO BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A3','ANU SAHA','RBI','200');
+
+		INSERT INTO  BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A4','ABHISHEK SAHA','AXIS','150');
+
+		INSERT INTO  BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A5','KOUSHIK RUIDAS','UCO','100');
+
+		INSERT INTO  BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A6','BINAYAK GHOSH','HDFC','1100');
+
+		INSERT INTO  BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A7','KOUSHIK BHAKAT','FEDERAL','1200');
+
+		INSERT INTO  BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A8','SOHINI MODOK','UBI','1500');
+
+		INSERT INTO  BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A9','ARIJIT DAS','UCO','100');
+
+INSERT INTO BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A10','DHANUKA','FEDERAL','2100');
+
+INSERT INTO BORROW(Loan_no,C_name,B_name,Amount)
+		VALUES('A12','AMRESH2','SBI','1100');
+
+
+
+
+
+QUESTIONS AND ANSWERES::-
+
+1: select Customer.c_name from Customer, deposit, Branch, Borrow
+    where ( Branch.city = 'Delhi' AND Customer.city = 'SUNDORBON'
+		AND Customer.c_name = deposit.c_name
+        		and Customer.c_name = Borrow.c_name
+        		and (Branch.b_name = deposit.b_name or Branch.b_name = Borrow.b_name));
+2:select Customer.c_name from Customer, deposit, Branch, Borrow
+    where ( Branch.city ='Kolkata' AND  customer.city = 'KOLKATA'
+		AND Customer.c_name = deposit.c_name
+        		and Customer.c_name = Borrow.c_name
+        		and (Branch.b_name = deposit.b_name or Branch.b_name = Borrow.b_name));
+
+3: select DEPOSIT.c_name from deposit,branch 
+	where  deposit.b_name = branch.b_name 
+	and 	
+	branch.city in (select branch.city from branch,customer,DEPOSIT where customer.c_name 
+				like 'ANU SAHA'
+			and
+			customer.c_name = deposit.c_name
+			and
+			deposit.b_name = branch.b_name);
+
+4: SELECT ACT_NO AS "ACC AND LO NO",B_NAME,DEPOSIT.C_NAME,AMOUNT FROM DEPOSIT,CUSTOMER
+	WHERE CUSTOMER.C_NAME = DEPOSIT.C_NAME 
+	AND CUSTOMER.CITY IN (SELECT CITY FROM CUSTOMER
+				     WHERE C_NAME =  'DHANUKA')
+UNION
+SELECT LOAN_NO,B_NAME,BORROW.C_NAME,AMOUNT FROM BORROW,CUSTOMER
+	WHERE CUSTOMER.C_NAME = BORROW.C_NAME 
+	AND CUSTOMER.CITY IN (SELECT CITY FROM CUSTOMER
+				     WHERE C_NAME =  'DHANUKA');
+				
+5:SELECT DISTINCT COUNT(CUSTOMER.C_NAME) FROM CUSTOMER,DEPOSIT,BORROW
+	WHERE
+	CUSTOMER.C_NAME = DEPOSIT.C_NAME
+	AND
+	BORROW.C_NAME = DEPOSIT.C_NAME;
+
+6:SELECT DISTINCT BORROW.C_NAME FROM BORROW
+	WHERE AMOUNT > (SELECT AMOUNT FROM BORROW WHERE C_NAME = 'BINAYAK GHOSH');
+						
+7:SELECT DEPOSIT.C_NAME FROM DEPOSIT,CUSTOMER,BRANCH
+	WHERE
+	CUSTOMER.C_NAME = DEPOSIT.C_NAME
+	AND
+	BRANCH.B_NAME = DEPOSIT.B_NAME
+	AND
+	BRANCH.CITY IN (SELECT BRANCH.CITY FROM BRANCH,DEPOSIT WHERE DEPOSIT.C_NAME ='AMRESH'
+			AND BRANCH.B_NAME = DEPOSIT.B_NAME)
+UNION
+SELECT DEPOSIT.C_NAME FROM DEPOSIT,CUSTOMER
+	WHERE
+	CUSTOMER.C_NAME = DEPOSIT.C_NAME
+	AND
+	CUSTOMER.CITY IN (SELECT CUSTOMER.CITY FROM CUSTOMER WHERE CUSTOMER.C_NAME ='DHANUKA');
+
+8: SELECT CUSTOMER.C_NAME FROM CUSTOMER,DEPOSIT,BRANCH
+	WHERE
+	CUSTOMER.C_NAME = DEPOSIT.C_NAME
+	AND
+	BRANCH.B_NAME = DEPOSIT.B_NAME
+	AND
+	CUSTOMER.CITY = 'DURGAPUR'
+	AND
+	BRANCH.CITY = 'Delhi'
+				DATE:-14/10/14
+
+9: SELECT CUSTOMER.C_NAME FROM BORROW,DEPOSIT,CUSTOMER
+	WHERE
+	DEPOSIT.C_NAME = BORROW.C_NAME
+	AND 
+	CUSTOMER.C_NAME = DEPOSIT.C_NAME
+	AND
+	CUSTOMER.CITY IN (SELECT CITY FROM CUSTOMER WHERE C_NAME = 'DHANUKA');
+
+10: SELECT CUSTOMER.C_NAME FROM BORROW,DEPOSIT,CUSTOMER,BRANCH
+	WHERE
+	CUSTOMER.C_NAME  = BORROW.C_NAME
+	OR 
+	CUSTOMER.C_NAME = DEPOSIT.C_NAME
+	AND
+	BRANCH.B_NAME = DEPOSIT.B_NAME
+	AND
+	CUSTOMER.CITY = 'KOLKATA'
+	AND
+	BRANCH.CITY IN (SELECT BRANCH.CITY FROM BRANCH,DEPOSIT WHERE DEPOSIT.C_NAME ='DHANUKA'
+			AND BRANCH.B_NAME = DEPOSIT.B_NAME);
+
+11:SELECT BRANCH.CITY FROM BRANCH,DEPOSIT
+	WHERE
+	DEPOSIT.C_NAME='SOHINI MODOK'
+	AND
+	BRANCH.B_NAME = DEPOSIT.B_NAME
+UNION
+SELECT BRANCH.CITY FROM BRANCH,DEPOSIT
+	WHERE
+	DEPOSIT.C_NAME='BINAYAK GHOSH'
+	AND
+	BRANCH.B_NAME = DEPOSIT.B_NAME;
+
+12:SELECT MAX(COUNT) FROM (SELECT COUNT(*) AS COUNT FROM DEPOSIT GROUP BY B_NAME);
+
+13: SELECT C_NAME,AMOUNT FROM DEPOSIT
+	WHERE
+	AMOUNT IN (SELECT MAX(AMOUNT) FROM DEPOSIT);
+
+14:SELECT Customer.C_name,(deposit.amount) as deposit_amount,(Borrow.amount) as Borrow_amount
+FROM ((Customer full outer JOIN deposit ON Customer.C_name=deposit.C_name)
+full outer JOIN Borrow
+ON Customer.C_name=Borrow.C_name)
+where Customer.city='KOLKATA';
+
+15: SELECT DEPOSIT.C_NAME FROM DEPOSIT,BORROW
+	WHERE
+	DEPOSIT.B_NAME IN ((SELECT DEPOSIT.B_NAME FROM DEPOSIT,BORROW,CUSTOMER WHERE CUSTOMER.C_NAME ='DHANUKA'
+				AND 
+				CUSTOMER.C_NAME = BORROW.C_NAME
+				AND
+				CUSTOMER.C_NAME = DEPOSIT.C_NAME
+				AND 
+				DEPOSIT.C_NAME = BORROW.C_NAME))
+	AND
+	DEPOSIT.C_NAME = BORROW.C_NAME;
+
+16: SELECT DEPOSIT.C_NAME,DEPOSIT.AMOUNT AS amount FROM DEPOSIT,BRANCH
+	WHERE
+	DEPOSIT.B_NAME = BRANCH.B_NAME
+	AND
+	BRANCH.CITY IN (SELECT CITY FROM CUSTOMER WHERE C_NAME='DHANUKA');
+	
+
+17: SELECT C_NAME,B_NAME FROM DEPOSIT WHERE
+	AMOUNT IN (SELECT MAX(AMOUNT) MAX_amount FROM DEPOSIT
+	GROUP BY B_NAME);
+
+18: SELECT C_NAME FROM DEPOSIT WHERE
+	AMOUNT IN (SELECT MAX(AMOUNT) MAX_amount FROM DEPOSIT
+	GROUP BY B_NAME)
+	AND 
+	B_NAME IN ( SELECT B_NAME FROM DEPOSIT,CUSTOMER WHERE DEPOSIT.C_NAME = 'AMRESH'
+			AND 
+			DEPOSIT.C_NAME = CUSTOMER.C_NAME);
+
+19: select customer.C_name
+from deposit,branch,customer
+where customer.C_name=deposit.C_name
+AND branch.B_name=deposit.B_name
+AND branch.B_name='HDFC' AND customer.city='Kolkata'
+AND deposit.amount>ALL
+(select amount from deposit);
+
+q20.
+SELECT B_name FROM deposit
+GROUP BY B_name having count(C_name) >= ALL
+ (
+	SELECT count (C_name)
+	 FROM Borrow GROUP BY B_name
+);
+
+
+
+
+q21.
+SELECT  C_name FROM Borrow
+WHERE B_name IN (
+		   SELECT B_name FROM Branch WHERE City IN
+		(   SELECT City FROM Branch WHERE B_name IN
+		 (    SELECT B_name FROM Borrow WHERE B_name IN 
+		( SELECT  B_name FROM Borrow where amount > = ALL 
+		(SELECT  amount FROM Borrow)))));
+
+q22.
+UPDATE deposit  set amount = (amount + amount * 0.1)
+WHERE C_Name  IN (
+		   SELECT C_Name FROM Customer WHERE City =
+			'DELHI') 
+AND B_Name IN (
+		SELECT B_Name FROM Branch WHERE City =
+		 'KOLKATA');
+
+q23.
+UPDATE deposit 
+set amount = (select max(amount) from deposit where  B_name='HSBC' 
+	GROUP BY B_Name) 
+WHERE C_name='MAHI';
+
+q24.
+UPDATE deposit 
+set amount=amount+1000 
+WHERE C_name='KOUSIK' and B_name IN (
+				SELECT B_name from deposit 
+				WHERE C_name='MAITY'
+			                 ) ;
+UPDATE deposit
+set amount=amount-1000 
+WHERE C_name='MAITY'and B_name=(
+		SELECT B_name FROM deposit WHERE C_name='KOUSIK'
+		);
+
+
+q25.
+UPDATE deposit 
+set amount = amount+1000 
+WHERE amount IN ( SELECT max(amount) FROM deposit GROUP BY B_name );
+
+q26.
+UPDATE deposit
+set amount=amount +1000
+WHERE amount >=ALL(
+		SELECT avg(amount) FROM deposit GROUP BY B_name );
+
+q27.
+DELETE FROM Borrow
+WHERE B_name IN (
+		SELECT B_name from Borrow GROUP BY B_name 
+		having avg(amount)<6000 );
+
+q28.
+DELETE FROM Borrow 
+WHERE B_name in (
+		  SELECT B_name FROM borrow GROUP BY
+		  B_name having count(loan_no) <= ALL
+	              ( 
+		SELECT count(loan_no) FROM borrow 
+			GROUP BY B_name));
+
+q29.
+DELETE FROM deposit
+WHERE C_name in ('MAHI', 'ABHISHEK') AND
+(SELECT City FROM Customer WHERE C_name='MAHI')=
+(SELECT City FROM Customer WHERE C_name='ABHISHEK');
